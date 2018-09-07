@@ -1,0 +1,296 @@
+/* tab1-------------- */
+  /* 消息 */
+    .information{
+      background:#ffffff;
+      height:40px;
+      z-index: 2;
+      width:90%;
+      border-radius:15px;
+      color:#666;
+      font-size:13px;
+      text-align:center;
+      line-height:40px;
+      margin:20px auto;
+      position: absolute;
+      border:1px solid #dcdcdc;
+      top: 0;
+      left:0;
+      right:0;
+    }
+    .information img{
+      width:15px;
+      margin-right:3px;
+    }
+  /* 地图 */
+    #container {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      margin:0;
+      font-family:"微软雅黑";
+      position: absolute;
+      top: 0;
+    }
+  
+  /* 终端树 */
+    #my-menu img{
+      width:100%;
+      margin:-0%  0px -50px ;
+    }
+    #my-menu{
+      background-color: #ffffff;
+      color: #262930;
+    }
+    .tree-select{
+      position:relative;
+      bottom:15px;
+      right:0;
+      left:0;
+      text-align:center;
+      height:50px;
+      line-height:30px;
+      padding:0 5%;
+      width:100%;
+      font-weight:800;
+
+    }
+    .tree-select span{
+      color: #fff;
+      border:1px solid #fff;
+      border-radius:20px;
+      padding:3px 10px;
+    }
+
+    .tree-content .list_t{
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+      line-height: 43px;
+      text-indent:10px;
+      color:#1880d1;
+      border-bottom: 1px solid #dcdcdc;
+      background: #f5f5f5;
+    }
+    .tree-content .list_t span{
+      line-height: 43px;
+      font-size:13px;
+      margin-right:10px;
+    }
+    .tree-title{
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+      line-height: 43px;
+      text-indent:22px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+    .tree-title span:last-child{
+      float:right;
+      margin-right:10px;
+    }
+    .tree-title span:last-child{
+      text-indent:0;
+      transition:0.3s;
+    }
+    .icon-ratate{
+      transform:rotate(180deg);
+    }
+    .tree-list{
+      overflow:hidden;
+      height: 0;
+      margin:0;
+      transition: 0.3s;
+      font-size:13px;
+    }
+    .tree-list li{
+      text-overflow:ellipsis;
+      overflow:hidden;
+      white-space:nowrap;
+      height:43px;
+      line-height:43px;
+      text-align: left !important;
+      text-indent:20px;
+    } 
+    .tree-list li span{
+      font-size: 12px;
+    }
+/* tab2---------------------------*/
+    #tab2 .c1{
+      color: #fe4e03;
+    }
+    #tab2 .c2{
+      color: #00a7ed;
+    }
+    #tab2 .c3{
+      color: #f88802;
+    }
+    #tab2 .c4{
+      color: #09bef5;
+    }
+    #tab2 .c5{
+      color: #5bc904;
+    }
+    #tab2 .content{
+      background:#eee;
+    }
+    #tab2   header{
+      width: 100%;
+      height: 9.25rem;
+    }
+    #tab2 header img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #tab2   nav{
+      width: 100%;
+      text-align: center;
+      background: #fff;
+      height: 3.32rem;
+    }
+    #tab2 nav .two-box{
+      width: 50%;
+      float: left;
+      box-sizing: border-box;
+      display: inline-block;
+      padding: 0.73rem 0;
+      font-size: 0.73rem;
+    }
+    #tab2 nav .two-box:nth-child(2){
+      border-left: 1px solid #e4e4e4;
+    }
+
+    #tab2 nav .two-box .icon{
+      background: red;
+      width: 1.84rem;
+      height: 1.84rem;
+      display: inline-block;
+      border-radius: 0.924rem;
+      text-align: center;
+      line-height: 1.84rem;
+    }
+    #tab2 nav .two-box:nth-child(1) .icon{
+      background: #e3ac1b;
+    }
+    #tab2 nav .two-box:nth-child(2) .icon{
+      background: #e55e65;
+    }
+    #tab2 nav .two-box .icon span:before{
+      font-size: 0.924rem;
+      color: #fff;
+    }
+    #tab2 nav .two-box>span{
+      font-size: 0.677rem;
+      color: #000;
+      margin-left: 0.431rem;
+    }
+
+    #tab2 .upper{
+      margin-top: 0.616rem;
+      text-align: center;
+      clear: both;
+      height: 8.624rem;
+    }
+    #tab2 .upper .fourbox{
+      box-sizing: border-box;
+      width: 25%;
+      float: left;
+      display: inline-block;
+      border-right: 1px solid #e4e4e4;
+      border-bottom: 1px solid #e4e4e4;
+      font-size: 0.616rem;
+      padding: 0.7rem 0;
+      background:#fff;
+    }
+    #tab2 .upper .fourbox:nth-child(4),#tab2 .upper .fourbox:nth-child(8){
+      border-right:none;
+    }
+    #tab2 .upper .fourbox:nth-child(4) ~ .fourbox{
+      border-bottom:none;
+    }
+
+    #tab2 .upper .fourbox i:before{
+      font-size: 1.232rem;
+    }
+    #tab2 .upper .fourbox p{
+      margin-top: 0.308rem;
+    }
+
+    #tab2 .lower{
+      margin-top: 1.54rem;
+      text-align: center;
+      clear: both;
+      height: 4.312rem;
+      margin-bottom: 4.312rem;
+    }
+    #tab2 .lower .fourbox{
+      box-sizing: border-box;
+      width: 25%;
+      float: left;
+      display: inline-block;
+      border-right: 1px solid #e4e4e4;
+      font-size: 0.616rem;
+      padding: 0.75rem 0;
+      background:#fff;
+    }
+    #tab2 .lower .fourbox:last-child{
+      border-right: none;
+    }
+    #tab2 .lower .fourbox i:before{
+      font-size: 1.232rem;
+    }
+    #tab2 .lower .fourbox p{
+      margin-top: 0.308rem;
+    }
+    #tab2 .two-box:active,#tab2 .fourbox:active{
+      background: #eee;
+    }
+/* tab3------------------------- */
+  #tab3{
+    background-color: #ffffff;
+    color: #262930;
+  }
+  #tab3 header{
+    height:100px;
+    background:#f4f6f9;
+    padding:20px 20px 0;
+  }
+  #tab3 header img{
+    width:60px;
+    height:60px;
+    float:left;
+  }
+  #tab3 header .name{
+    float:left;
+    margin-left:20px;
+  }
+  #tab3 header .name p:first-child{
+    font-weight:800;
+    text-indent:5px;
+    margin:3px 0;
+  }
+  #tab3 header .name p:last-child{
+    font-size:12px;
+    color:#fff;
+    line-height:25px;
+    padding:0 10px;
+    border-radius:15px;
+    background:#f05b48;
+  }
+  #tab3 .logout{
+    border:1px solid #19a4fb;
+    color:#19a4fb;
+    float:right;
+    padding:5px 10px;
+    border-radius:20px;
+    margin:15px;
+  }
+  #tab3 .item-link{
+    padding:0;
+  }
+  #tab3 .item-after{
+    max-width:50%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }

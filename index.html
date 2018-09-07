@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+	<title>登录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,  initial-scale=1" >
+	<!-- CSS_base --> 
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/wave.css">
+	<style>
+	</style>
+</head>
+<body>
+<div id="alert" style="top:5%;"></div>
+<!-- 内容 -->
+<div id="login-content">
+	<div id="login">
+		<img src="img/cfdz.png" alt="" class="logo">
+		<p class="title">监控管理系统</p>
+		<input type="text" class="form-control" id="uname" placeholder="用户">
+		<input type="password" class="form-control" id="upwd" placeholder="密码">
+		<button>立即登录</button>
+	</div>
+	<footer>版本 1.1</footer>
+</div>
+<!-- 波浪 -->
+<div class="waveWrapper waveAnimation">
+	<div class="waveWrapperInner bgTop">
+	  <div class="wave waveTop" style="background-image: url('img/wave-top.png')"></div>
+	</div>
+	<div class="waveWrapperInner bgMiddle">
+	  <div class="wave waveMiddle" style="background-image: url('img/wave-mid.png')"></div>
+	</div>
+	<div class="waveWrapperInner bgBottom">
+	  <div class="wave waveBottom" style="background-image: url('img/wave-bot.png')"></div>
+	</div>
+</div>
+<script src="config.js"></script>
+<script src="baseJS/jquery.min.js"></script>
+<script src="baseJS/md5.js"></script>
+<script src="baseJS/hmac-sha1.js"></script>
+<script src="baseJS/enc-base64-min.js"></script>
+<script src="js/base.js"></script>
+<script>
+
+
+//获取本地储存的用户名 
+var str_name = localStorage.getItem('uname');
+var str_upwd = localStorage.getItem('upwd'); //取不到位null
+if (str_name && str_upwd) {
+	$("#uname").val(str_name);
+	$("#upwd").val(str_upwd);
+}
+//登录事件
+$("#login button").click(function () {
+	var $uname = $("#uname").val(),
+	    $upwd = $("#upwd").val();
+	if ($uname == "" | $upwd == "") {
+		var msg = '<img src="img/icon/error.png" alt="" style="width:30px;margin-top:-3px;">输入不能为空';
+		my_alert(msg);
+		return;
+	}
+	var reg = new RegExp("[\\u4E00-\\u9FFF]+","g");
+	if(reg.test($uname)|reg.test($upwd)){
+		var msg = '<img src="img/icon/error.png" alt="" style="width:30px;margin-top:-3px;">用户名或密码错误(中文)';
+		my_alert(msg);
+		return;
+	}
+
+    var target='/StreetLightServer/api/app/userInfo/login.do',
+        data=`account=${$uname}&password=${CryptoJS.MD5($upwd).toString()}&timestamp=${new Date().getTime()}`;
+        hmacSHA1 = CryptoJS.HmacSHA1(target+'?'+data, Allappsecret),
+        sign=encodeURIComponent(hmacSHA1.toString(CryptoJS.enc.Base64));
+	$.ajax({
+		type:'post',
+		url:Allurl+target+'?'+data+'&sign='+sign,
+		dataType:'json',
+		error:function(){console.log("错误!")}
+	}).then((data)=>{
+		console.log(data);
+		if(data.resultCode==0000){
+			console.log(data.msg);
+			localStorage.setItem('uname', $uname);
+			localStorage.setItem('upwd', $upwd);
+			localStorage.setItem('uInfoId', data.userInfoJson.userInfoId);
+			localStorage.setItem('token', data.token);
+			localStorage.setItem('department', data.userInfoJson.department);
+			location = "app.html";
+			
+		}else{
+			var msg = '<img src="img/icon/error.png" alt="" style="width:30px;margin-top:-3px;">'+data.msg;
+			my_alert(msg);
+		}
+	})
+});
+
+//出现键盘时底端不会影响
+var windheight = $(window).height();  /*未唤起键盘时当前窗口高度*/
+        
+$(window).resize(function(){
+   var docheight = $(window).height();  /*唤起键盘时当前窗口高度*/     
+   if(docheight < windheight){            /*当唤起键盘高度小于未唤起键盘高度时执行*/
+      $(".waveWrapper").hide();
+   }else{
+      $(".waveWrapper").show();
+   }           
+});
+</script>
+</body>
+</html>

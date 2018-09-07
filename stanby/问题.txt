@@ -1,0 +1,67 @@
+1.用户登录不能转换中文,
+2.没有登录分级
+
+3.自定义开始时的城市坐标
+
+
+
+1.用户信息接口 /userInfo/login.do
+    用户退出/userInfo/logout.do
+2.终端列表 /terminalBox/queryTreeList.do
+
+
+
+3.终端箱基本信息 /terminalBox/queryConfiguration.do
+4.路灯类型 configInfo/queryList.do
+5.单灯数据 lightInfo/queryList.do
+6.开关灯时间列表 configInfo/queryList.do
+
+7.操作记录 /operationRecord/queryList.do
+8.历史数据 /terminalBoxHistoryData/queryList.do
+9.报警记录 /alarmInfo/queryList.do
+
+
+10.开关灯（运行状态界面）/terminalBoxControl/switch.do
+11.布防撤防（运行状态界面）/terminalBoxControl/arm.do
+12.电表读数（运行状态界面）/terminalBoxControl/meterRead.do
+13.遥控开关灯（遥控开关灯界面）/terminalBoxControl/switchLight.do
+
+14.终端箱实时数据（运行状态界面界面）（已实现）/terminalBox/queryRealTimeData.do
+    1.关开等时间转换公式?
+    2.控制主干道?
+
+
+
+日出,日落
+总输入漏电电流: <span>${msg.leakCurrent
+
+
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#${staIcon}"></use>
+                </svg>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#${staIcon}"></use>
+                </svg>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#${staIcon}"></use>
+                </svg>
+                回路使用情况:使用
+                    <div class="uichild">
+        <p>第一路 </p>
+        <p class="state"><span class="iconfont icon-zhengchang"></span>正常</p>
+        <p>实时漏电：00.39 A  一级漏电：05.00 A</p>
+        <p>二级漏电：10.00 A  三级漏电：20.00 A</p>
+        <p>状态:连接
+            <button class="mybutton-blue ui-button">断开</button>
+            <button class="mybutton-success ui-button">恢复</button>
+        </p>
+    </div>
+
+
+
+    !!!!有两个保存的数据,不会事实更新的
+    app.js =>180 =>182
+
+    style="color:${Usta==0?'#ff505f':(Usta==1?'#37bd61':'#16d2f3')}"
+    =>时间装换格式
+    =>西河/师范

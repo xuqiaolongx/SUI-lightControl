@@ -1,0 +1,374 @@
+/*终端管理*/
+  .popup-configManage .list_t {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 43px;
+    text-indent: 10px;
+    color: #444444;
+    border-bottom: 1px solid #dcdcdc;
+    background: #f7f7f7;
+    font-size: 16px;
+  }
+
+  .popup-configManage .list_t.a {
+    color: #b73b3b;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  .popup-configManage .list_t.b {
+    color: #72b1e3;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  .popup-configManage .item-content input, .popup-configManage .item-content select, .popup-configManage .item-content .label ,.popup-configManage .content-block .item-title{
+    font-size: 0.7rem;
+  }
+
+  .popup-configManage .item-title.label {
+    width: 45%;
+  }
+
+  .popup-configManage .content-block, .popup-configManage .list-block {
+    margin: 0;
+    padding: 0;
+  }
+/*终端UI */
+  .ax {
+    color: #ffb300
+  }
+
+  .bx {
+    color: #23b14e
+  }
+
+  .cx {
+    color: #ff1e1e
+  }
+
+  .UItitle {
+    margin: 5px 0;
+    font-size: 25px;
+    font-weight: 500;
+    text-indent: 10%;
+  }
+
+  .popup-configUI table {
+    width: 90%;
+    margin: 0 auto 20px;
+  }
+
+  .ui-button {
+    background: #fff;
+    margin: 0 20px;
+  }
+
+  .uiparent {
+    width: 50%;
+    text-align: center;
+    border: 2px solid #2f9cd4;
+    padding: 10px;
+    margin: 0 auto 40px;
+  }
+
+  .way {
+    width: 90%;
+    border: 1px solid #4e4e4e;
+    padding: 10px;
+    margin: 0 auto 40px;
+  }
+
+  .way .div {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .way .ui-button {
+    margin: 5px 6px;
+    border: 1px solid #000000;
+  }
+
+  .uiparent .ui-button {
+    margin: 0 10px;
+  }
+
+  .uichild {
+    width: 90%;
+    border: 1px solid #18dd9b;
+    padding: 10px 0;
+    text-align: center;
+    margin: 40px auto;
+    position: relative;
+  }
+
+  .uichild p:first-child {
+    font-size: 18px;
+    font-weight: 800;
+    border-bottom: 1px solid #bababa;
+    width: 50%;
+    margin: 0 auto 20px;
+  }
+
+  .uichild .contactsStatus {
+    position: absolute;
+    color: #18dd9b;
+    top: -25px;
+  }
+
+  .uichild .useStatus {
+    margin: 0.6rem;
+  }
+
+  .uichild .light {
+    margin: 0.6rem;
+  }
+
+  .uichild .light .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .uichild .msg {
+    margin: 5px 0;
+  }
+
+  .uichild .bt {
+    margin: 15px 0;
+  }
+
+  .ax .icon, .bx .icon, .cx .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .uichild table {
+    font-size: 13px;
+  }
+/*用户管理*/
+  .popup-configUser .list-block{
+    padding-bottom: 100px;
+  }
+  .popup-configUser .list_t {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 43px;
+    text-indent: 10px;
+    color: #444444;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 16px;
+  }
+
+  .popup-configUser .list_t.a {
+    color: #b73b3b;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  .popup-configUser .list_t.b {
+    color: #72b1e3;
+    background: #fff;
+    font-size: 14px;
+  }
+
+  .popup-configUser .item-content input, .popup-configUser .item-content select, .popup-configUser .item-content .label {
+    font-size: 14px;
+  }
+
+  .popup-configUser .item-title.label {
+    width: 45%;
+  }
+
+  .popup-configUser .item-content{
+    background:#f7f7f7;
+  }
+
+  .popup-configUser .content-block, .popup-configUser .list-block {
+    margin: 0;
+  }
+
+/*遥控开关灯*/
+  .popup-remoteSwitchLight .config {
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 0.5;
+    color: #ab3131;
+    font-weight: 800;
+    text-align: center;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+  }
+
+  .popup-remoteSwitchLight .config:active {
+    color: #000;
+  }
+
+  .popup-remoteSwitchLight .check {
+    width: 80%;
+    text-align: center;
+    margin: 20px auto;
+  }
+
+  .popup-remoteSwitchLight .check input {
+    width: 0.9rem;
+    height: 0.9rem;
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+
+  .popup-remoteSwitchLight .check p {
+    line-height: 1rem;
+    font-size: 0.9rem;
+    margin: 5px 0;
+    width: 49%;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .popup-remoteSwitchLight .time {
+    width: 75%;
+    padding: 5px 0;
+    margin: 15px auto;
+    text-align: center;
+    border: 1px solid;
+  }
+
+  .popup-remoteSwitchLight .btn {
+    text-align: center;
+  }
+/*操作记录*/
+  .popup-title {
+    font-size: 25px;
+    font-weight: 500;
+    text-indent: 20px;
+    float: left;
+  }
+
+  .popup-search {
+    border: 1px solid #2ec3a3;
+    float: right;
+    width: 50px;
+    border-radius: 15px;
+    text-align: center;
+    line-height: 30px;
+    margin: 3px 10% 0 0;
+  }
+
+  .popup-msg li {
+    height: 30px;
+    text-indent: 20px;
+  }
+
+  .popup-msg li:active {
+    background: #f5f5f5;
+  }
+
+  .popup-msg li label {
+    color: #f05b48;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .popup-msg li input {
+    color: #9c9ea4;
+    font-size: 15px;
+    width: 200px;
+    height: 30px;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+  }
+  .popup-operation .loadMore {
+    margin: 20px auto;
+    font-size: 18px;
+    padding: 3px 0;
+    border: 1px solid;
+    text-align: center;
+    width: 40%;
+    display: none;
+  }
+
+  .popup-operation .loadAll {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .popup-operation .loadMore:active {
+    background: #f8f8f8;
+  }
+/*报警记录 */
+  .popup-alert .loadMore {
+    margin: 20px auto;
+    font-size: 18px;
+    padding: 3px 0;
+    border: 1px solid;
+    text-align: center;
+    width: 40%;
+    display: none;
+  }
+
+  .popup-alert .loadAll {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  .popup-alert .loadMore:active {
+    background: #f8f8f8;
+  }
+
+/* 开关灯设置 */
+  #router-lightConfig .l-title{
+    margin-top:10px;
+  }
+  #router-lightConfig .light{
+    text-indent:15px;
+  }
+  #router-lightConfig .card.using{
+    background: #f1f1f1;
+  }
+  #router-lightConfig select, #router-lightConfig .light input{
+     width:90px;
+     background: #fff;
+     margin:1px 5px;
+  }
+  /* 历史数据 */
+  #router-history .loadMore {
+    margin: 20px auto;
+    font-size: 18px;
+    padding: 3px 0;
+    border: 1px solid;
+    text-align: center;
+    width: 40%;
+    display: none;
+  }
+
+  #router-history  .loadAll {
+    margin: 20px auto;
+    text-align: center;
+  }
+
+  #router-history  .loadMore:active {
+    background: #f8f8f8;
+  }
+  #router-history .dian span {
+    display: block;
+    margin-left: 25px;
+  }
+  #router-history .two span{
+    display: inline-block;
+    width: 49%;
+  }
+
+  #router-history .c1{
+    color: #fe4e03;
+  }
+  #router-history .c2{
+    color: #00a7ed;
+  }
+  #router-history .c5{
+    color: #5bc904;
+  }

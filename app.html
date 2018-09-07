@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="overflow:scroll;overflow-y:hidden;overflow-x:hidden">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width,  initial-scale=1" >
+	<!-- 依赖 -->
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <!-- al-icon -->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_657899_dcjmtcgv3fm.css">
+	<!-- 我的 -->
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/app2.css">
+	<link rel="stylesheet" href="css/tab2.css">
+</head>
+<body  oncontextmenu="return false;" onselectstart="return false">
+    <div class="page-group">
+        <!-- 首页 -->
+        <div class="page page-current" id='index'>
+            <header class="bar bar-nav my-nav app-top">
+                <div class="left open-panel" data-panel='#my-menu'>
+                    <span class="icon icon-menu"></span>
+                </div>
+                <div class="right">
+                    <!-- <span class="icon icon-search "></span> -->
+                </div>
+                <div class="my-title">GCF7005城市照明监控及管理系统</div>
+            </header>
+            <nav class="bar bar-tab app-bottom">
+                <a class="tab-item tab-link  active" href="#tab1">
+                    <span class="icon icon-picture"></span>
+                    <span class="tab-label">地图</span>
+                </a>
+                <a class="tab-item tab-link " href="#tab2">
+                    <span class="icon icon-app"></span>
+                    <span class="tab-label">功能</span>
+                </a>
+                <a class="tab-item tab-link " href="#tab3">
+                    <span class="icon icon-me"></span>
+                    <span class="tab-label">设置</span>
+                </a>
+            </nav>
+            <div class="content">
+                <div class="tabs">
+                    <div id="tab1" class="tab active">
+                        <div class="content">
+                                <div class="information">
+                                    <!-- <img src="img/icon/all.png" alt="">总数【<span class="all">XX</span>】 -->
+                                    终端总数【<span class="all">XX</span>】
+                                    <img src="img/icon/dx-green.png" alt="">在线数【<span class="online">XX</span>】
+                                    <img src="img/icon/dx-red.png" alt="">故障数【<span class="alert">XX</span>】
+                                </div>
+                                <div id="container"></div>
+                        </div>
+                    </div>
+                    <div id="tab2" class="tab">
+                        <div class="content">
+                            <header>
+                                <img src="img/a.jpg" alt="">
+                            </header>
+                            <nav>
+                                <div class="two-box configManage">
+                                    <div class="icon"><span class="iconfont icon-guanli1"></span></div>
+                                    <span>终端管理</span>
+                                </div>
+                                <div  class="two-box configUI">
+                                    <div class="icon"><span class="iconfont icon-jiemian"></span></div>
+                                    <span>运行界面</span>
+                                </div>
+                            </nav>
+                        
+                            <article class="upper">
+                                <a href="#router-user">
+                                    <div class="fourbox" >
+                                        <i class="iconfont icon-yonghu1 c1"></i>
+                                        <p>用户管理</p>
+                                    </div>
+                                </a>
+                                <a href="#router-light">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-kaiguan c2"></i>
+                                        <p>遥控开关灯</p>
+                                    </div>
+                                </a>
+                                <a href="#router-lightConfig">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-shezhi c3"></i>
+                                        <p>开关灯设置</p>
+                                    </div>
+                                </a>
+                                <a href="#router-operation">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-jiazai c5"></i>
+                                        <p>操作记录</p>
+                                    </div>
+                                </a>
+                                <div class="fourbox pop-alert">
+                                    <i class="iconfont icon-baojingma c1"></i>
+                                    <p>报警记录</p>
+                                </div>
+                                <a href="#router-history">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-jilu c2"></i>
+                                        <p>历史数据</p>
+                                    </div>
+                                </a>
+                                <div class="fourbox">
+                                    <i class="iconfont icon-deng c3"></i>
+                                    <p>单灯控制</p>
+                                </div>
+                                <div class="fourbox">
+                                    <i class="iconfont icon-shijian c5"></i>
+                                    <p>终端校时</p>
+                                </div>
+                            </article>
+                        
+                            <!-- <article class="lower">
+                                <div class="fourbox">
+                                    <i class="iconfont icon-yejijihuo- c1"></i>
+                                    <p>未能使用</p>
+                                </div>
+                                <div class="fourbox">
+                                    <i class="iconfont icon-stock c2"></i>
+                                    <p>未能使用</p>
+                                </div>
+                                <div class="fourbox">
+                                    <i class="iconfont icon-touxiang c3"></i>
+                                    <p>未能使用</p>
+                                </div>
+                                <div class="fourbox">
+                                    <i class="iconfont icon-fenxiang c5"></i>
+                                    <p>未能使用</p>
+                                </div>
+                            </article> -->
+                        </div>
+                    </div>
+                    <div id="tab3" class="tab">
+                        <div class="content">
+                            <header>
+                                <img src="img/icon/avator.png" alt="">
+                                <div class="name">
+                                    <p class="uname">test</p>
+                                    <p class="power">管理员</p>
+                                </div>
+                                <p class="logout login-out">退出登录</p>
+                            </header>
+                            <div class="list-block">
+                              <ul>
+                                <li class="item-content item-link city-shezhi">
+                                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                                  <div class="item-inner">
+                                    <div class="item-title">定位城市</div>
+                                    <div class="item-after city"></div>
+                                  </div>
+                                </li>
+                                <li class="item-content item-link url-shezhi">
+                                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                                  <div class="item-inner">
+                                    <div class="item-title">请求地址</div>
+                                    <div class="item-after url"></div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 2-用户管理 -->
+        <div class="page popup-configUser" id='router-user'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>用户管理</h1>
+            </header>
+            <div class="content">
+                <ul class="list-block"></ul>
+            </div>
+        </div>
+        <!-- 2-控制开关灯 -->
+        <div class="page popup-remoteSwitchLight" id='router-light'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>遥控开关灯</h1>
+            </header>
+            <div class="content">
+                    <div>
+                        <p class="config">已选的终端:还未选择</p>
+                    </div>
+                    <div class="check">
+                        <p><input type="checkbox">主干道全夜灯</p>
+                        <p><input type="checkbox">节能灯</p>
+                        <p><input type="checkbox">主干道半夜灯</p>
+                        <p><input type="checkbox">高杆灯</p>
+                        <p><input type="checkbox">庭院灯</p>
+                        <p><input type="checkbox">公园灯</p>
+                        <p><input type="checkbox">草坪灯</p>
+                        <p><input type="checkbox">郊区灯</p>
+                    </div>
+                    <div class="time">
+                        <p class="Tday"></p>
+                        <p class="Ttime"></p>
+                    </div>
+                    <div class="btn">
+                        <button class="mybutton-blue ui-button linghtOn">开灯</button>
+                        <button class="mybutton-success ui-button linghtOff">关灯</button>
+                    </div> 
+            </div>
+        </div>
+        <!-- 2-终端监控 -->
+        <div class="page" id='router-lightConfig'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>开关灯时间设置</h1>
+            </header>
+            <div class="content">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 2-操作记录 -->
+        <div class="page popup-operation" id='router-operation'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>操作记录</h1>
+            </header>
+            <div class="content">
+                <div class="top">
+                    <p class="popup-title">操作记录</p>
+                    <p class="popup-search">查询</p>
+                </div>
+                <ul class="popup-msg">
+                    <li class="user">
+                    <label for="op-user">选择用户：</label>
+                    <input type="text" placeholder="全部" id="op-user">
+                    </li>
+                    <li class="start">
+                    <label for="op-btime">开始时间：</label>
+                    <input type="text" id="op-btime">
+                    </li>
+                    <li class="end">
+                    <label for="op-otime">结束时间：</label>
+                    <input type="text" id="op-otime">
+                    </li>
+                </ul>
+                <ul class="op-list">
+                </ul>
+                <div class="loadMore">加载更多</div>
+                <div class="loadAll">已加载全部</div>
+            </div>
+        </div>
+        <!-- 3-报警记录 -->
+        <div class="page popup-alert" id='router-alert'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>报警记录</h1>
+            </header>
+            <div class="content">
+                <div class="top">
+                    <p class="popup-title">报警记录</p>
+                    <p class="popup-search">查询</p>
+                </div>
+                <ul class="popup-msg">
+                    <li class="alertCheck">
+                    <label>查询条件：</label>
+                    <input type="text" value="" data-arr="0000000000">
+                    </li>
+                    <li class="start">
+                    <label for="al-btime">开始时间：</label>
+                    <input type="text" id="al-btime">
+                    </li>
+                    <li class="end">
+                    <label for="al-otime">结束时间：</label>
+                    <input type="text" id="al-otime">
+                    </li>
+                </ul>
+                <ul class="op-list"></ul>
+                <div class="loadMore">加载更多</div>
+                <div class="loadAll">已加载全部</div>
+            </div>
+        </div>
+        <!-- 3-历史数据 -->
+        <div class="page" id='router-history'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>历史数据</h1>
+            </header>
+            <div class="content">
+                <ul class="op-list">
+
+                </ul>
+                <div class="loadMore">加载更多</div>
+                <div class="loadAll">已加载全部</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- popup 新窗口 -->
+    <!-- 终端树 -->
+    <div class="popup popup-treeList">
+        <header class="bar bar-nav my-nav black">
+            <div class="left close-popup">
+                <img src="img/icon/close-w.png" alt="">
+            </div>
+        </header>
+        <div class="content">
+            <div class="tree-checkbox"></div>               
+        </div>
+    </div>
+    <!-- 终端管理 -->
+    <div class="popup popup-configManage">
+        <header class="bar bar-nav my-nav white">
+            <div class="left close-popup">
+                <img src="img/icon/close-b.png" alt="">
+            </div>
+        </header>
+        <div class="content">
+            <div class="buttons-tab">
+              <a href="#manage1" class="tab-link active button">基本信息</a>
+              <a href="#manage2" class="tab-link button">报警设置</a>
+              <a href="#manage3" class="tab-link button">控制回路</a>
+            </div>
+            <div class="content-block">
+              <div class="tabs">
+                <div id="manage1" class="tab active">
+                  <div class="content-block">
+                  </div>
+                </div>
+                <div id="manage2" class="tab">
+                  <div class="content-block">
+                  </div>
+                </div>
+                <div id="manage3" class="tab">
+                    <div class="content-block">
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <!-- 终端UI -->
+    <div class="popup popup-configUI">
+        <header class="bar bar-nav my-nav white">
+            <div class="left close-popup">
+                <img src="img/icon/close-b.png" alt="">
+            </div>
+        </header>
+        <div class="content">
+           
+        </div>        
+    </div>
+
+
+    <!-- panel 的膜 -->
+    <div class="panel-overlay"></div>
+    <!--panel 侧栏  -->
+    <div class="panel panel-left panel-reveal" id="my-menu">
+        <div class="pic">
+            <img src="img/a.jpg" alt="">
+            <p class="tree-select"><span>未选择</span></p>
+        </div>
+        
+        <div class="tree-content">
+        </div>           
+    </div>
+
+    <!-- 兼容jquery -->
+    <script src="baseJS/jquery.min.js"></script>
+    <script>jQuery.noConflict();</script>
+    <!-- 加载编译文件 -->
+    <script src="baseJS/md5.js"></script>
+    <script src="baseJS/hmac-sha1.js"></script>
+    <script src="baseJS/enc-base64-min.js"></script>
+
+
+    <script type='text/javascript' src='baseJS/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='baseJS/sm.min.js' charset='utf-8'></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=Qzuk8F9F01rV30Mj5PGPAPfQ5iAPTVq6"></script>
+    <script type="text/javascript" src="//g.alicdn.com/msui/sm/0.6.2/js/sm-city-picker.min.js" charset="utf-8"></script>
+
+    <script src="config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/tab2.js"></script>
+
+
+<script>
+ $.init();
+ //不可以选取文字
+document.oncontextmenu=function(){return false;}; 
+document.onselectstart=function(){return false;};
+
+jQuery('.list_d').slideUp();
+jQuery(".list_t").on("click",function () {
+    jQuery('.list_d').stop();
+    jQuery(this).siblings(".list_t").removeAttr("data-up");
+    if(jQuery(this).attr("data-up")=="open"){
+        jQuery(this).removeAttr("data-up").siblings(".list_d").slideUp();
+    }else{
+        jQuery(this).attr("data-up","open").next().slideDown().siblings(".list_d").slideUp();
+    }
+});
+
+</script>
+</body>
+</html>
