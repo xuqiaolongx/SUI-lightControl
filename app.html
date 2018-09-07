@@ -316,9 +316,25 @@
                 <h1 class='title'>历史数据</h1>
             </header>
             <div class="content">
-                <ul class="op-list">
-
+                 <div class="top">
+                    <p class="popup-title">历史数据</p>
+                    <p class="popup-search">查询</p>
+                </div>
+                <ul class="popup-msg">
+                    <li class="historyInput">
+                        <label>选择终端：</label>
+                        <input type="text" value="全部" data-id="" disabled>
+                    </li>
+                    <li class="start">
+                    <label for="his-btime">开始时间：</label>
+                    <input type="text" id="his-btime">
+                    </li>
+                    <li class="end">
+                    <label for="his-otime">结束时间：</label>
+                    <input type="text" id="his-otime">
+                    </li>
                 </ul>
+                <ul class="op-list list-block"></ul>
                 <div class="loadMore">加载更多</div>
                 <div class="loadAll">已加载全部</div>
             </div>

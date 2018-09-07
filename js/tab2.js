@@ -46,6 +46,12 @@ $("#tab").on("click",'.show-more',function(e){
         predayArr=[preDate.getFullYear(),premonth,preday];
 
     // 初始化picker的input键
+    $("#his-btime").datetimePicker({
+        value: [predayArr[0],predayArr[1],predayArr[2], '0', '00']
+    });
+    $("#his-otime").datetimePicker({
+        value: [curdayArr[0],curdayArr[1],curdayArr[2], '0', '00']
+    });
     $("#op-btime").datetimePicker({
         value: [predayArr[0],predayArr[1],predayArr[2], '0', '00']
     });
@@ -1421,6 +1427,7 @@ $("#tab").on("click",'.show-more',function(e){
     })
     //点击查询
     $(".popup-alert").on('click','.popup-search',function(){
+        if(BoxNo==''){ $.alert('你还未选择终端!', function () { $.openPanel("#my-menu");});return;}
         if($(".alertCheck input").data("arr")=='0'){
             $.toast("请选择查询条件");return;
         }
@@ -1430,10 +1437,10 @@ $("#tab").on("click",'.show-more',function(e){
         var a=$("#al-otime").val().split(" ");
         a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
         var operationTimeTo=a[0]+' '+a[1];
-        console.log($(".alertCheck input").data("arr"))
+        console.log(jQuery(".alertCheck input").attr("data-arr"))
         myAjax({
             "url":"/alarmInfo/queryList.do",
-            "data":`alarmType=${$(".alertCheck input").data("arr")}&alarmTimeFrom=${operationTimeFrom}&alarmTimeTo=${operationTimeTo}&terminalBoxNo=${BoxNo}&pageIndex=${1}&pageSize=${AllpageSize}`,
+            "data":`alarmType=${jQuery(".alertCheck input").attr("data-arr")}&alarmTimeFrom=${operationTimeFrom}&alarmTimeTo=${operationTimeTo}&terminalBoxNo=${BoxNo}&pageIndex=${1}&pageSize=${AllpageSize}`,
             "callBack":function(data){
                 console.log(data)
                 if(data.resultCode!='0000'){$.toast(data.msg);return;}
@@ -1475,7 +1482,7 @@ $("#tab").on("click",'.show-more',function(e){
         var alarmTimeTo=a[0]+' '+a[1];
         myAjax({
             "url":"/alarmInfo/queryList.do",
-            "data":`alarmType=${$(".alertCheck input").data("arr")}&alarmTimeFrom=${alarmTimeFrom}&alarmTimeTo=${alarmTimeTo}&terminalBoxNo=${BoxNo}&pageIndex=${pageIndex}&pageSize=${AllpageSize}`,
+            "data":`alarmType=${jQuery(".alertCheck input").attr("data-arr")}&alarmTimeFrom=${alarmTimeFrom}&alarmTimeTo=${alarmTimeTo}&terminalBoxNo=${BoxNo}&pageIndex=${pageIndex}&pageSize=${AllpageSize}`,
             "callBack":function(data){
                 console.log(data)
                 $(".popup-alert .loadMore").attr("data-index",pageIndex+1);
@@ -1503,77 +1510,182 @@ $("#tab").on("click",'.show-more',function(e){
         })
     }
 // 3-历史记录
-    myAjax({
-        url:"/terminalBoxHistoryData/queryList.do",
-        data:'createTimeFrom=2018-09-03 00:00:00&createTimeTo=2018-09-05 00:00:00&terminalBoxId=""&pageIndex=1&pageSize=30',
-        callBack:function(data){
-            console.log(data)
-            if(data.resultCode!='0000'){$.toast(data.msg);return;}
-            // $.toast("一共查询到"+data.totalNum+"条数据")
-            var html='';
-            for(var p of data.response){
-                var sta=data
-                switch (sta) {
-                    case '0': var staString='不吸合'; break;
-                    case '1': var staString='不释放'; break;
-                    case '2': var staString='吸合'; break;
-                    case '3': var staString='释放'; break;
-                }
-                html+=`<li>
-                    <p class="time">
-                        <i class="icon iconfont icon-lingxing"></i>
-                        <span>${p.terminalBoxName}</span>  
-                    </p>
-                    <p class="msg two">
-                        <span>编号 : ${p.terminalBoxNo} </span>
-                        <span>亮灯率 : ${p.lightRatio}%</span>
-                    </p>
-                    <p class="msg show-more">时间 : ${p.createTime}</p> 
-                    <p class="msg show-more">片区/道路 : ${p.areaName+'/'+p.roadName}</p> 
-                    <div class="slideup">
-                    <p class="msg dian">总输入电压 : 
-                        <span><i class="icon iconfont icon-dian c1"></i>A相电压:${p.voltage_A}V</span>
-                        <span><i class="icon iconfont icon-dian c2"></i>B相电压:${p.voltage_B}V</span>
-                        <span><i class="icon iconfont icon-dian c5"></i>C相电压:${p.voltage_C}V</span>
-                    </p> 
-                    <p class="msg dian">总输入电流 : 
-                        <span><i class="icon iconfont icon-dian c1"></i>A相电流:${p.current_A}A</span>
-                        <span><i class="icon iconfont icon-dian c2"></i>B相电流:${p.current_B}A</span>
-                        <span><i class="icon iconfont icon-dian c5"></i>C相电流:${p.current_C}A</span>
-                    </p>`;
-                for(var i=1;i<=16;i++){
-                    var sta=eval('p.contactsStatus_'+i);
+    //点击选择终端
+    $(".historyInput").on('click','input',()=>{
+        $.openPanel("#my-menu");
+        //还没做全部的处理,不能去选全部
+        // $(".historyInput input").val("全部")
+    })
+    //点击查询
+    $("#router-history").on('click','.popup-search',function(){
+        var tar=$(".historyInput input");
+        var hisBoxNo='';
+        if(tar.val()!='全部'){
+            hisBoxNo=tar.attr('data-id')
+        }
+        var a=$("#al-btime").val().split(" ");
+            a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
+        var TimeFrom=a[0]+' '+a[1];
+        var a=$("#al-otime").val().split(" ");
+            a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
+        var TimeTo=a[0]+' '+a[1];
+        myAjax({
+            url:"/terminalBoxHistoryData/queryList.do",
+            data:`createTimeFrom=${TimeFrom}&createTimeTo=${TimeTo}&terminalBoxNo=${hisBoxNo}&pageIndex=${1}&pageSize=${AllpageSize}`,
+            "callBack":function(data){
+                console.log(data)
+                if(data.resultCode!='0000'){$.toast(data.msg);return;}
+                $.toast("一共查询到"+data.totalNum+"条数据")
+                var html='';
+                for(var p of data.response){
+                    var sta=data
                     switch (sta) {
                         case '0': var staString='不吸合'; break;
                         case '1': var staString='不释放'; break;
                         case '2': var staString='吸合'; break;
                         case '3': var staString='释放'; break;
                     }
-                    html+=`<p class="msg">第${i}路 : 接触器状态:${staString}
-                        <p class="msg dian">
-                            <span><i class="icon iconfont icon-dian c1"></i>A相电流:${eval('p.current_A_'+i)}A</span>
-                            <span><i class="icon iconfont icon-dian c2"></i>B相电流:${eval('p.current_B_'+i)}A</span>
-                            <span><i class="icon iconfont icon-dian c5"></i>C相电流:${eval('p.current_C_'+i)}A</span>
+                    html+=`<li class="item-link">
+                        <p class="time">
+                            <i class="icon iconfont icon-lingxing"></i>
+                            <span>${p.terminalBoxName}</span>  
+                        </p>
+                        <p class="msg two">
+                            <span><i class="icon iconfont icon-fl-shuju"></i>编号 : ${p.terminalBoxNo} </span>
+                            <span><i class="icon iconfont icon-fl-shuju"></i>亮灯率 : ${p.lightRatio}%</span>
+                        </p>
+                        <p class="msg show-more"><i class="icon iconfont icon-fl-shuju"></i>时间 : ${p.createTime}</p> 
+                        <p class="msg show-more"><i class="icon iconfont icon-fl-shuju"></i>片区/道路 : ${p.areaName+'/'+p.roadName}</p> 
+                        <div class="slideup">
+                        <p class="msg dian">总输入电压 : 
+                            <span><i class="icon iconfont icon-dian c1"></i>A相电压:${p.voltage_A}V</span>
+                            <span><i class="icon iconfont icon-dian c2"></i>B相电压:${p.voltage_B}V</span>
+                            <span><i class="icon iconfont icon-dian c5"></i>C相电压:${p.voltage_C}V</span>
                         </p> 
-                    </p>`;
+                        <p class="msg dian">总输入电流 : 
+                            <span><i class="icon iconfont icon-dian c1"></i>A相电流:${p.current_A}A</span>
+                            <span><i class="icon iconfont icon-dian c2"></i>B相电流:${p.current_B}A</span>
+                            <span><i class="icon iconfont icon-dian c5"></i>C相电流:${p.current_C}A</span>
+                        </p>`;
+                    for(var i=1;i<=16;i++){
+                        var sta=eval('p.contactsStatus_'+i);
+                        switch (sta) {
+                            case '0': var staString='不吸合'; break;
+                            case '1': var staString='不释放'; break;
+                            case '2': var staString='吸合'; break;
+                            case '3': var staString='释放'; break;
+                        }
+                        html+=`<p class="msg">第${i}路 : 接触器状态:${staString}
+                            <p class="msg dian">
+                                <span><i class="icon iconfont icon-dian c1"></i>A相电流:${eval('p.current_A_'+i)}A</span>
+                                <span><i class="icon iconfont icon-dian c2"></i>B相电流:${eval('p.current_B_'+i)}A</span>
+                                <span><i class="icon iconfont icon-dian c5"></i>C相电流:${eval('p.current_C_'+i)}A</span>
+                            </p> 
+                        </p>`;
+                    }
+                    html+="</div></li>";       
                 }
-                html+="</div></li>";       
+                $('#router-history .op-list').html(html);
+                jQuery("#router-history .slideup").slideUp();
+                if(data.totalNum>AllpageSize){
+                    $("#router-history .loadMore").show().attr("data-index",2);
+                    $("#router-history .loadAll").hide();
+                }
             }
-            $('#router-history .op-list').html(html);
-            if(data.totalNum>AllpageSize){
-                $(".popup-alert .loadMore").show().attr("data-index",2);
-                $(".popup-alert .loadAll").hide();
-            }
-            jQuery("#router-history .slideup").slideUp();
-        }
+        })
     })
-    // 点击展示更多
+    // 点击展示更多内容
     $("#router-history").on("click",".op-list li",(e)=>{
+        
+        var currentTop=jQuery(e.currentTarget).offset().top;//当前元素顶端距离屏幕最顶端是多少px
+        var contentTop=$("#router-history .content").scrollTop();//content元素顶端距离屏幕最顶端是多少px
+        if(currentTop<50){
+            $("#router-history .content").scrollTop(contentTop-(65-currentTop))
+        }
         jQuery(e.currentTarget).find(".slideup").slideToggle();
-        console.log(jQuery(e.currentTarget).offset())
-        // console.log(jQuery(e.currentTarget).scrollTop())
-        // console.log($("#router-history .content").scrollTop())
     })
+    // 加载跟多事件
+    $("#router-history").on('click','.loadMore',function(e){
+        hisLoadMore($(e.target).data('index'))
+    })
+    // 加载跟多函数
+    function hisLoadMore(pageIndex){
+        var tar=$(".historyInput input");
+        var hisBoxNo='';
+        if(tar.val()!='全部'){
+            hisBoxNo=tar.attr('data-id')
+        }
+        var a=$("#al-btime").val().split(" ");
+        a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
+        var TimeFrom=a[0]+' '+a[1];
+        var a=$("#al-otime").val().split(" ");
+        a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
+        var TimeTo=a[0]+' '+a[1];
+        myAjax({
+            url:"/terminalBoxHistoryData/queryList.do",
+            data:`createTimeFrom=${TimeFrom}&createTimeTo=${TimeTo}&terminalBoxNo=${hisBoxNo}&pageIndex=${pageIndex}&pageSize=${AllpageSize}`,
+            "callBack":function(data){
+                console.log(data)
+                if(data.resultCode!='0000'){$.toast(data.msg);return;}
+                $.toast("一共查询到"+data.totalNum+"条数据")
+                var html='';
+                for(var p of data.response){
+                    var sta=data
+                    switch (sta) {
+                        case '0': var staString='不吸合'; break;
+                        case '1': var staString='不释放'; break;
+                        case '2': var staString='吸合'; break;
+                        case '3': var staString='释放'; break;
+                    }
+                    html+=`<li class="item-link">
+                        <p class="time">
+                            <i class="icon iconfont icon-lingxing"></i>
+                            <span>${p.terminalBoxName}</span>  
+                        </p>
+                        <p class="msg two">
+                            <span><i class="icon iconfont icon-fl-shuju"></i>编号 : ${p.terminalBoxNo} </span>
+                            <span><i class="icon iconfont icon-fl-shuju"></i>亮灯率 : ${p.lightRatio}%</span>
+                        </p>
+                        <p class="msg show-more"><i class="icon iconfont icon-fl-shuju"></i>时间 : ${p.createTime}</p> 
+                        <p class="msg show-more"><i class="icon iconfont icon-fl-shuju"></i>片区/道路 : ${p.areaName+'/'+p.roadName}</p> 
+                        <div class="slideup">
+                        <p class="msg dian">总输入电压 : 
+                            <span><i class="icon iconfont icon-dian c1"></i>A相电压:${p.voltage_A}V</span>
+                            <span><i class="icon iconfont icon-dian c2"></i>B相电压:${p.voltage_B}V</span>
+                            <span><i class="icon iconfont icon-dian c5"></i>C相电压:${p.voltage_C}V</span>
+                        </p> 
+                        <p class="msg dian">总输入电流 : 
+                            <span><i class="icon iconfont icon-dian c1"></i>A相电流:${p.current_A}A</span>
+                            <span><i class="icon iconfont icon-dian c2"></i>B相电流:${p.current_B}A</span>
+                            <span><i class="icon iconfont icon-dian c5"></i>C相电流:${p.current_C}A</span>
+                        </p>`;
+                    for(var i=1;i<=16;i++){
+                        var sta=eval('p.contactsStatus_'+i);
+                        switch (sta) {
+                            case '0': var staString='不吸合'; break;
+                            case '1': var staString='不释放'; break;
+                            case '2': var staString='吸合'; break;
+                            case '3': var staString='释放'; break;
+                        }
+                        html+=`<p class="msg">第${i}路 : 接触器状态:${staString}
+                            <p class="msg dian">
+                                <span><i class="icon iconfont icon-dian c1"></i>A相电流:${eval('p.current_A_'+i)}A</span>
+                                <span><i class="icon iconfont icon-dian c2"></i>B相电流:${eval('p.current_B_'+i)}A</span>
+                                <span><i class="icon iconfont icon-dian c5"></i>C相电流:${eval('p.current_C_'+i)}A</span>
+                            </p> 
+                        </p>`;
+                    }
+                    html+="</div></li>";       
+                }
+                $('#router-history .op-list').html(html);
+                jQuery("#router-history .slideup").slideUp();
+                if(data.totalNum>AllpageSize){
+                    $("#router-history .loadMore").show().attr("data-index",2);
+                    $("#router-history .loadAll").hide();
+                }
+            }
+        })
+    }
 
 // 关闭侧栏后触发事件
 $('#my-menu').on('closed',function(){

@@ -460,6 +460,7 @@ $(document).on('closed','.popup-treeList', function () {
 function configSelect(data,id){
     $(".tree-select span").html(data);
     BoxNo=id;
+    $(".historyInput input").val(data).attr("data-id",id)
 }
 
 
