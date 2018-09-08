@@ -15,7 +15,7 @@
 	<!-- 依赖 -->
     <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
     <!-- al-icon -->
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_657899_dcjmtcgv3fm.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_657899_3oj421r70hf.css">
 	<!-- 我的 -->
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/app.css">
@@ -103,24 +103,30 @@
                                         <p>操作记录</p>
                                     </div>
                                 </a>
-                                <div class="fourbox pop-alert">
-                                    <i class="iconfont icon-baojingma c1"></i>
-                                    <p>报警记录</p>
-                                </div>
+                                <a href="#router-alert">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-baojingma c1"></i>
+                                        <p>报警记录</p>
+                                    </div>
+                                </a>
                                 <a href="#router-history">
                                     <div class="fourbox">
                                         <i class="iconfont icon-jilu c2"></i>
                                         <p>历史数据</p>
                                     </div>
                                 </a>
-                                <div class="fourbox">
-                                    <i class="iconfont icon-deng c3"></i>
-                                    <p>单灯控制</p>
-                                </div>
-                                <div class="fourbox">
-                                    <i class="iconfont icon-shijian c5"></i>
-                                    <p>终端校时</p>
-                                </div>
+                                <a href="#router-singleLight">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-deng c3"></i>
+                                        <p>单灯控制</p>
+                                    </div>
+                                </a>
+                                <a href="#router-configTime">
+                                    <div class="fourbox">
+                                        <i class="iconfont icon-shijian c5"></i>
+                                        <p>终端校时</p>
+                                    </div>
+                                </a>
                             </article>
                         
                             <!-- <article class="lower">
@@ -222,7 +228,7 @@
                     </div> 
             </div>
         </div>
-        <!-- 2-终端监控 -->
+        <!-- 2-开关灯设置 -->
         <div class="page" id='router-lightConfig'>
             <header class="bar bar-nav">
                 <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
@@ -231,13 +237,7 @@
                 </a>
                 <h1 class='title'>开关灯时间设置</h1>
             </header>
-            <div class="content">
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-content-inner">这是一个用纯文本的简单卡片。但卡片可以包含自己的页头，页脚，列表视图，图像，和里面的任何元素。</div>
-                    </div>
-                </div>
-            </div>
+            <div class="content"> </div>
         </div>
         <!-- 2-操作记录 -->
         <div class="page popup-operation" id='router-operation'>
@@ -288,6 +288,10 @@
                     <p class="popup-search">查询</p>
                 </div>
                 <ul class="popup-msg">
+                    <li class="alertBoxNo">
+                        <label>选择终端：</label>
+                        <input type="text" value="未选择" data-id="" disabled>
+                    </li>
                     <li class="alertCheck">
                     <label>查询条件：</label>
                     <input type="text" value="" data-arr="0000000000">
@@ -337,6 +341,62 @@
                 <ul class="op-list list-block"></ul>
                 <div class="loadMore">加载更多</div>
                 <div class="loadAll">已加载全部</div>
+            </div>
+        </div>
+        <!-- 3-单灯控制 -->
+        <div class="page" id='router-singleLight'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>单灯控制</h1>
+            </header>
+            <div class="content">
+                <div class="buttons-tab">
+                    <a href="#light1" class="tab-link active button">单灯列表</a>
+                    <a href="#light2" class="tab-link button">功能配置</a>
+                </div>
+                <div class="tabs">
+                    <div id="light1" class="tab active">
+                        <div class="content-block">
+                            <div class="list-block">
+                                <ul>
+                                    <li class="item-content item-link">
+                                    <div class="item-media"><i class="icon icon-f7"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title">商品名称</div>
+                                        <div class="item-after">杜蕾斯</div>
+                                    </div>
+                                    </li>
+                                    <li class="item-content item-link">
+                                    <div class="item-media"><i class="icon icon-f7"></i></div>
+                                    <div class="item-inner">
+                                        <div class="item-title">型号</div>
+                                        <div class="item-after">极致超薄型</div>
+                                    </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="light2" class="tab">
+                        <div class="content-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 3-终端校时 -->
+        <div class="page" id='router-configTime'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                返回
+                </a>
+                <h1 class='title'>终端校时</h1>
+            </header>
+            <div class="content">
             </div>
         </div>
     </div>

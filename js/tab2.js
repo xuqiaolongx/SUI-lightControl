@@ -250,7 +250,7 @@ $("#tab").on("click",'.show-more',function(e){
                 }
                 var html2=`
                     <ul class="list-block">
-                        <li class="list_t">变压器温度</li>
+                        <li class="list_t item-content item-link">变压器温度</li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警温度(℃)</div>
@@ -271,7 +271,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t">箱门报警</li>
+                        <li class="list_t item-content item-link">箱门报警</li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li class="list_t a">前门</li>
@@ -376,7 +376,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </li>
                             </ul>
                         </li>
-                        <li class="list_t">进水报警</li>
+                        <li class="list_t item-content item-link">进水报警</li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警内容</div>
@@ -391,7 +391,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t">防区红外线报警</li>
+                        <li class="list_t item-content item-link">防区红外线报警</li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警内容</div>
@@ -406,7 +406,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t">停电/恢复供电</li>
+                        <li class="list_t item-content item-link">停电/恢复供电</li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li  class="list_t a">正常停电</li>
@@ -456,7 +456,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </li>
                             </ul>
                         </li>
-                        <li class="list_t">缺相</li>
+                        <li class="list_t item-content item-link">缺相</li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li  class="list_t a">A相</li>
@@ -518,7 +518,7 @@ $("#tab").on("click",'.show-more',function(e){
                     }
                     OptionHtml.length==0?"OptionHtml+='<option>无数据</option>'":''
                     html3+=
-                    `<li class="list_t">${p.cableFaultContent.slice(0,-4)}</li>
+                    `<li class="list_t item-content item-link">${p.cableFaultContent.slice(0,-4)}<span class="icon icon-right"></span></li>
                     <li class="list_d">
                         <ul style=" padding-left: 25px;">
                             <div class="item-content">
@@ -1016,10 +1016,10 @@ $("#tab").on("click",'.show-more',function(e){
             }else if(res.resultCode==0006){
                 $.toast('没有数据');return;
             }
-            var html='',level=["高级管理员","中级管理员","初级管理员","一般用户"];
+            var html=`<p class="totalNum">一共查询到${res.totalNum}条数据</p>`,level=["高级管理员","中级管理员","初级管理员","一般用户"];
             for(var p of res.response){
                 html+=`
-                <li class="list_t">${p.userName}</li>
+                <li class="list_t item-content item-link">${p.userName}</li>
                 <li class="list_d">
                     <div class="item-content">
                         <div class="item-title label">账号</div>
@@ -1189,7 +1189,8 @@ $("#tab").on("click",'.show-more',function(e){
                                 <input type="checkbox" name="my-checkbox" ${use==0?'checked':''}>
                                 <div class="item-media"><i class="icon icon-form-checkbox" data-el="D${i}"></i></div>
                         </label>
-                    </div><div class="card-content"><ul class="card-content-inner">`
+                    </div>
+                    <div class="card-content"><ul class="card-content-inner">`
                     for(var p of data.response){
                         if(p.configType<AllLightNum){
                             html+=`<li class="l-title">${p.configData1}</li>
@@ -1266,7 +1267,7 @@ $("#tab").on("click",'.show-more',function(e){
     $("#router-lightConfig").on('click','.again',()=>{
         lightConfigFun()
     })
-// 2-操作记录-------------------------
+// 2-操作记录------------------------- 
     // 点击查询
     $(".popup-operation").on('click','.popup-search',function(){
         var a=$("#op-btime").val().split(" ");
@@ -1365,10 +1366,9 @@ $("#tab").on("click",'.show-more',function(e){
 
 
 // 3-报警记录-------------------------
-    //点击进入
-    $("#tab2 .pop-alert").on("click",function(e){
-        if(BoxNo==''){ $.alert('你还未选择终端!', function () { $.openPanel("#my-menu");});return;}
-        $.router.load("#router-alert");
+    //点击选择终端
+    $(".alertBoxNo").on('click','input',()=>{
+        $.openPanel("#my-menu");
     })
     //点击查询条件
     var alertArr=[
@@ -1474,6 +1474,7 @@ $("#tab").on("click",'.show-more',function(e){
     })
     // 加载跟多函数
     function alLoadMore(pageIndex){
+        if(BoxNo==''){ $.alert('你还未选择终端!', function () { $.openPanel("#my-menu");});return;}
         var a=$("#al-btime").val().split(" ");
         a[1].length==4?a[1]="0"+a[1]+":00":a[1]+=":00";
         var alarmTimeFrom=a[0]+' '+a[1];
@@ -1686,11 +1687,8 @@ $("#tab").on("click",'.show-more',function(e){
             }
         })
     }
-
+    
 // 关闭侧栏后触发事件
 $('#my-menu').on('closed',function(){
     // console.log(45645)
 })
-
-
-

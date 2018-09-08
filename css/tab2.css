@@ -1,4 +1,8 @@
 /*终端管理*/
+  /* .popup-configManage .content{
+    padding-top:6px;
+    background: #eee;
+  } */
   .popup-configManage .list_t {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -6,8 +10,8 @@
     line-height: 43px;
     text-indent: 10px;
     color: #444444;
+    /* background:#fff; */
     border-bottom: 1px solid #dcdcdc;
-    background: #f7f7f7;
     font-size: 16px;
   }
 
@@ -147,6 +151,14 @@
     font-size: 13px;
   }
 /*用户管理*/
+  .popup-configUser .content{
+    background: #eee;
+  }
+  .popup-configUser .totalNum{
+    margin:0 0 10px;
+    text-align: center;
+    font-size:14px;
+  }
   .popup-configUser .list-block{
     padding-bottom: 100px;
   }
@@ -155,12 +167,15 @@
     overflow: hidden;
     white-space: nowrap;
     line-height: 43px;
-    text-indent: 10px;
+    text-indent: 5px;
+    background: #fff;
     color: #444444;
     border-bottom: 1px solid #dcdcdc;
     font-size: 16px;
   }
-
+  .popup-configUser .list_d {
+      padding-left:20px;
+  }
   .popup-configUser .list_t.a {
     color: #b73b3b;
     background: #fff;
@@ -179,10 +194,6 @@
 
   .popup-configUser .item-title.label {
     width: 45%;
-  }
-
-  .popup-configUser .item-content{
-    background:#f7f7f7;
   }
 
   .popup-configUser .content-block, .popup-configUser .list-block {
