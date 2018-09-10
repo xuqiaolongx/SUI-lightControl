@@ -29,6 +29,17 @@ function checkA(){
         })
     },time)
 }
+// 一些的点击伸缩事件
+$("#router-lightConfig").on("click",'.list_t',function (e) {
+    if($(e.target).hasClass('icon-form-checkbox')||$(e.target).hasClass('item-media')){return}
+    jQuery('#router-lightConfig .list_d').stop();
+    jQuery(this).siblings("#router-lightConfig .list_t").removeAttr("data-up");
+    if(jQuery(this).attr("data-up")=="open"){
+        jQuery(this).removeAttr("data-up").siblings("#router-lightConfig  .list_d").slideUp(150);
+    }else{
+        jQuery(this).attr("data-up","open").next().slideDown(150).siblings("#router-lightConfig  .list_d").slideUp();
+    }
+});
 // 列表显示更多文字
 $("#tab").on("click",'.show-more',function(e){
     $(e.target).toggleClass("show-more");
@@ -250,7 +261,7 @@ $("#tab").on("click",'.show-more',function(e){
                 }
                 var html2=`
                     <ul class="list-block">
-                        <li class="list_t item-content item-link">变压器温度</li>
+                        <li class="list_t item-content item-link">变压器温度<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警温度(℃)</div>
@@ -271,7 +282,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t item-content item-link">箱门报警</li>
+                        <li class="list_t item-content item-link">箱门报警<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li class="list_t a">前门</li>
@@ -376,7 +387,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </li>
                             </ul>
                         </li>
-                        <li class="list_t item-content item-link">进水报警</li>
+                        <li class="list_t item-content item-link">进水报警<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警内容</div>
@@ -391,7 +402,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t item-content item-link">防区红外线报警</li>
+                        <li class="list_t item-content item-link">防区红外线报警<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <div class="item-content">
                                 <div class="item-title label">报警内容</div>
@@ -406,7 +417,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </div>
                             </div>
                         </li>
-                        <li class="list_t item-content item-link">停电/恢复供电</li>
+                        <li class="list_t item-content item-link">停电/恢复供电<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li  class="list_t a">正常停电</li>
@@ -456,7 +467,7 @@ $("#tab").on("click",'.show-more',function(e){
                                 </li>
                             </ul>
                         </li>
-                        <li class="list_t item-content item-link">缺相</li>
+                        <li class="list_t item-content item-link">缺相<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                         <li class="list_d">
                             <ul style=" padding-left: 25px;">
                                 <li  class="list_t a">A相</li>
@@ -518,7 +529,7 @@ $("#tab").on("click",'.show-more',function(e){
                     }
                     OptionHtml.length==0?"OptionHtml+='<option>无数据</option>'":''
                     html3+=
-                    `<li class="list_t item-content item-link">${p.cableFaultContent.slice(0,-4)}<span class="icon icon-right"></span></li>
+                    `<li class="list_t item-content item-link">${p.cableFaultContent.slice(0,-4)}<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                     <li class="list_d">
                         <ul style=" padding-left: 25px;">
                             <div class="item-content">
@@ -1019,7 +1030,7 @@ $("#tab").on("click",'.show-more',function(e){
             var html=`<p class="totalNum">一共查询到${res.totalNum}条数据</p>`,level=["高级管理员","中级管理员","初级管理员","一般用户"];
             for(var p of res.response){
                 html+=`
-                <li class="list_t item-content item-link">${p.userName}</li>
+                <li class="list_t item-content item-link">${p.userName}<span class="icon icon-right" style="margin-right: 15px;"></span></li>
                 <li class="list_d">
                     <div class="item-content">
                         <div class="item-title label">账号</div>
@@ -1181,16 +1192,15 @@ $("#tab").on("click",'.show-more',function(e){
                 for(var i=0;i<3;i++){
                     var use=eval('headerData.'+map[i].target);
                     // console.log(headerData)
-                    html+=`
-                    <div class="card D${i}">
-                    <div class="card-header">
-                        <span>${map[i].name}</span>
+                    html+=`<ul>
+                    <li class="list_t item-content item-link ${i==0?'first':''}">
+                        ${map[i].name}
                         <label class="label-checkbox item-content">
                                 <input type="checkbox" name="my-checkbox" ${use==0?'checked':''}>
-                                <div class="item-media"><i class="icon icon-form-checkbox" data-el="D${i}"></i></div>
+                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
                         </label>
-                    </div>
-                    <div class="card-content"><ul class="card-content-inner">`
+                    </li>
+                    <li class="list_d"><ul>`
                     for(var p of data.response){
                         if(p.configType<AllLightNum){
                             html+=`<li class="l-title">${p.configData1}</li>
@@ -1212,7 +1222,7 @@ $("#tab").on("click",'.show-more',function(e){
                             </li>`;
                         }
                     }
-                    html+=`</ul></div></div>`; //加上末尾
+                    html+=`</ul></li></ul>`
                 }
                 html+=`<div class="list-block">
                     <div class="item-content">
@@ -1242,20 +1252,11 @@ $("#tab").on("click",'.show-more',function(e){
                     </div>`;
                 $("#router-lightConfig .content").html(html);
                 //slideUp功能
-                jQuery("#router-lightConfig .card-content").slideUp()
+                jQuery("#router-lightConfig .list_d").slideUp()
             }
         })
     }
     lightConfigFun()
-    //点击事件
-    jQuery("#router-lightConfig").on('click','.card-header',(e)=>{
-        var $tar=jQuery(e.target)
-        console.log($tar)
-        console.log($tar.hasClass('icon-form-checkbox'))
-        if($tar.hasClass('card-header')){
-            $tar.next().slideToggle(300)
-        }
-    });
     //两个点击按钮事件
     $("#router-lightConfig").on('click','.button-success',()=>{
         if($("#router-lightConfig .label-checkbox input:checked").length!=1){

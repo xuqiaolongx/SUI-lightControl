@@ -184,7 +184,9 @@
       color: #000;
       margin-left: 0.431rem;
     }
-
+    #tab2 .list-right{
+      margin-right: 15px;
+    }
     #tab2 .upper{
       margin-top: 0.616rem;
       text-align: center;

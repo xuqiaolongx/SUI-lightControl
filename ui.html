@@ -99,3 +99,62 @@
 </div>
 
 
+html+=`
+<div class="card D${i}">
+<div class="card-header">
+    <span>${map[i].name}</span>
+    <label class="label-checkbox item-content">
+            <input type="checkbox" name="my-checkbox" ${use==0?'checked':''}>
+            <div class="item-media"><i class="icon icon-form-checkbox" data-el="D${i}"></i></div>
+    </label>
+</div>
+<div class="card-content"><ul class="card-content-inner">`
+for(var p of data.response){
+    if(p.configType<AllLightNum){
+        html+=`<li class="l-title">${p.configData1}</li>
+        <li class="light">
+            <span>开灯</span>
+            <select>
+                <option>经纬开</option>
+                <option selected>固定开</option>
+            </select>
+            <input type="time"  value="02:22">
+        </li>
+        <li class="light">
+            <span>关灯</span>
+            <select>
+                <option selected>经纬开</option>
+                <option>固定开</option>
+            </select>
+            <input type="time"  value="02:22">
+        </li>`;
+    }
+}
+html+=`</ul></div></div>`; //加上末尾
+}
+html+=`<div class="list-block">
+<div class="item-content">
+    <div class="item-media"><i class="icon icon-form-name"></i></div>
+    <div class="item-inner">
+    <div class="item-title label">东经</div>
+    <div class="item-input">
+        <input type="number" value="${headerData.configData1}">
+    </div>
+    </div>
+</div>
+<div class="item-content">
+    <div class="item-media"><i class="icon icon-form-name"></i></div>
+    <div class="item-inner">
+    <div class="item-title label">北纬</div>
+    <div class="item-input">
+        <input type="number" value="${headerData.configData2}">
+    </div>
+    </div>
+</div>
+</div>
+<div class="content-block">
+    <div class="row">
+    <div class="col-50"><a href="#" class="button button-big button-fill again">再次获取设置</a></div>
+    <div class="col-50"><a href="#" class="button button-big button-fill button-success">保存修改</a></div>
+    </div>
+</div>`;

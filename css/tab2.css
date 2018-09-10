@@ -334,6 +334,9 @@
   }
 
 /* 开关灯设置 */
+  #router-lightConfig .content{
+    background: #eee;
+  }
   #router-lightConfig .l-title{
     margin-top:10px;
   }
@@ -344,11 +347,34 @@
     background: #f1f1f1;
   }
   #router-lightConfig select, #router-lightConfig .light input{
-     width:90px;
-     background: #fff;
-     margin:1px 5px;
+    width:90px;
+    background: #fff;
+    margin:1px 5px;
   }
-  /* 历史数据 */
+  #router-lightConfig .label-checkbox{
+    display: inline-block;
+    float:right;
+    margin-right:5%;
+  }
+  #router-lightConfig .list_t {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 43px;
+    text-indent: 25px;
+    background: #fff;
+    color: #444444;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 16px;
+  }
+  #router-lightConfig .list_d {
+    font-size:13px;
+    padding:10px 0 30px 20px; 
+  }
+  #router-lightConfig .list-block{
+    background: #fff;
+  }
+/* 历史数据 */
   #router-history .loadMore {
     margin: 20px auto;
     font-size: 18px;
@@ -388,6 +414,36 @@
   #router-history .content{
     transition: 0.5s;
   }
+/* 单灯控制 */
+  #router-singleLight .content-block{
+    margin: 0;
+    padding: 0;
+  }
+  #router-singleLight .label-checkbox{
+    display: inline-block;
+    float:right;
+    margin-right:5%;
+  }
+  #router-singleLight .list_t {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 43px;
+    text-indent: 25px;
+    background: #fff;
+    color: #444444;
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 16px;
+  }
+  #router-singleLight .list_d {
+    font-size:13px;
+    padding:10px 0 30px 20px; 
+  }
+
+
+
+
+
   .button_container{
       width: 176px;
       margin: 0 auto;
